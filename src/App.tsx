@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Button from './components/Button';
-import useTimer from './hooks/useTimer';
+import useTimer from "./hooks/useTimer";
 import Picker from 'react-mobile-picker';
 
 // Define types for picker values
@@ -22,8 +22,8 @@ const App: React.FC = () => {
   const { timeLeft, isActive, hasStarted, isTimeUp, startPauseTimer, resetTimer } = useTimer();
 
   const pickerOptionGroups = {
-    hours: Array.from({ length: 100 }, (_, i) => String(i)), // 0-99
-    minutes: Array.from({ length: 60 }, (_, i) => String(i)), // 0-59
+    hours: Array.from({ length: 4 }, (_, i) => String(i)), // 0-4
+    minutes: Array.from({ length: 59 }, (_, i) => String(i)), // 0-59
     seconds: Array.from({ length: 60 }, (_, i) => String(i)), // 0-59
   };
 
@@ -71,28 +71,28 @@ const App: React.FC = () => {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 text-white p-4 font-sans">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-100 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-100 p-4 font-sans">
       <div className="sm:p-10 w-full max-w-md">
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 ">Timer</h1>
 
         {/* Zeitanzeige oder Eingabefelder */}
         {!hasStarted ? (
           <div className="flex flex-col items-center justify-center space-y-4 mb-8">
-            <div className="text-center text-sm text-gray-400 grid grid-cols-3 gap-x-2 px-4 sm:px-8 w-full max-w-xs mx-auto">
+            <div className="text-center text-sm text-neutral-950-secondary dark:text-neutral-100-secondary grid grid-cols-3 gap-x-2 px-4 sm:px-8 w-full max-w-xs mx-auto">
               <span>Stunden</span>
               <span>Minuten</span>
               <span>Sekunden</span>
             </div>
             {/* Wrapper div to control picker width */}
             <div className="w-full max-w-xs mx-auto">
-              <Picker value={pickerValue} onChange={setPickerValue} height={180} itemHeight={36}>
+              <Picker value={pickerValue} onChange={setPickerValue} height={180} itemHeight={36} wheelMode="natural">
                 {Object.keys(pickerOptionGroups).map(name => (
                   <Picker.Column key={name} name={name}>
                     {pickerOptionGroups[name as keyof typeof pickerOptionGroups].map(option => (
                       <Picker.Item key={option} value={option}>
                         {({ selected }) => (
                           <div style={{ 
-                            color: selected ? 'white' : 'grey', 
+                            color: selected ? (document.documentElement.classList.contains('dark') ? 'white' : 'black') : 'grey', 
                             fontSize: '2.125rem' // Example: text-lg equivalent (18px)
                           }}>
                             {option}
@@ -110,7 +110,7 @@ const App: React.FC = () => {
             {/* Kreisindikator */}
             <svg className="w-64 h-64 sm:w-72 sm:h-72 transform -rotate-90" viewBox="0 0 240 240">
               <circle
-                className="text-gray-700"
+                className="text-neutral-200 dark:text-neutral-800"
                 strokeWidth="12"
                 stroke="currentColor"
                 fill="transparent"
@@ -119,7 +119,7 @@ const App: React.FC = () => {
                 cy="120"
               />
               <circle
-                className="text-blue-500"
+                className="text-neutral-300 dark:text-neutral-700"
                 strokeWidth="12"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
@@ -138,7 +138,7 @@ const App: React.FC = () => {
                 {formatTime(timeLeft)}
               </div>
               {totalDuration > 0 && (
-                <div className="text-sm text-gray-400 mt-1">
+                <div className="text-sm text-neutral-950-secondary dark:text-neutral-100-secondary mt-1">
                   Verbleibend
                 </div>
               )}
@@ -170,7 +170,7 @@ const App: React.FC = () => {
 
         {/* Time's up message */}
         {isTimeUp && (
-          <div className="text-center mt-6 text-2xl font-semibold text-green-400">
+          <div className="text-center mt-6 text-2xl font-semibold text-green-400 dark:text-green-500">
             Time's up!
           </div>
         )}

@@ -23,9 +23,9 @@ const TimerInput: React.FC<TimerInputProps> = ({ value, onChange, placeholder, l
       disabled={disabled}
       min="0"
       max={max}
-      className="w-20 sm:w-24 h-16 sm:h-20 text-3xl sm:text-4xl text-center bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+      className="w-20 sm:w-24 h-16 sm:h-20 text-3xl sm:text-4xl text-center bg-[var(--color-background-secondary)] text-[var(--color-text-primary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
     />
-    <label htmlFor={id} className="text-xs text-gray-400 mt-1">{label}</label> {/* Use id with htmlFor */}
+    <label htmlFor={id} className="text-xs text-[var(--color-text-secondary)] mt-1">{label}</label> {/* Use id with htmlFor */}
   </div>
 );
 

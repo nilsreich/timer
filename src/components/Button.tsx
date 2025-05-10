@@ -8,13 +8,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 // Komponente für die Schaltflächen
 const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', size = 'medium', className, ...props }) => {
-  const baseStyle = " rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-150 ease-in-out";
-  
+  const baseStyle = " rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark-primary transition-all duration-150 ease-in-out";
+
   const variantStyles = {
-    primary: "bg-teal-700 hover:bg-teal-600 text-white focus:ring-teal-400",
-    secondary: "bg-gray-600 hover:bg-gray-500 text-gray-200 focus:ring-gray-500",
-    danger: "bg-red-700 hover:bg-red-600 text-white focus:ring-red-400",
-    icon: "bg-gray-700 hover:bg-gray-600 text-gray-300 focus:ring-gray-500 p-3",
+    primary: "bg-green-600 hover:bg-blue-600 dark:bg-neutral-950 dark:hover:bg-blue-500 text-white focus:ring-neutral-200 dark:focus:ring-neutral-950",
+    secondary: "bg-gray-300 hover:bg-gray-400 dark:bg-neutral-800 dark:hover:bg-gray-600 text-neutral-950 dark:text-neutral-100 focus:ring-gray-400 dark:focus:ring-gray-500",
+    danger: "bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-600 text-white focus:ring-red-400 dark:focus:ring-red-500",
+    icon: "bg-gray-200 hover:bg-gray-300 dark:bg-neutral-800 dark:hover:bg-gray-600 text-neutral-950 dark:text-neutral-100 focus:ring-gray-400 dark:focus:ring-gray-500 p-3",
   };
 
   const sizeStyles = {

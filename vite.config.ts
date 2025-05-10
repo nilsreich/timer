@@ -20,8 +20,8 @@ export default defineConfig({
       name: 'Google Timer Klon',
       short_name: 'TimerKlon',
       description: 'A simple timer application clone.',
-      theme_color: '#1f2937', // Corresponds to bg-gray-800
-      background_color: '#111827', // Corresponds to bg-gray-900
+      theme_color: '#ffffff', // Light theme primary color
+      background_color: '#f3f4f6', // Light theme secondary color
       display: 'standalone',
       scope: '/',
       start_url: '/',
