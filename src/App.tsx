@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import Button from './components/Button';
 import useTimer from "./hooks/useTimer";
 import Picker from 'react-mobile-picker';
